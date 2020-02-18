@@ -23,11 +23,13 @@ final ThemeData kMainTheme = ThemeData.dark().copyWith(
         letterSpacing: 2.0,
         color: kAccentDarkColor),
         caption: TextStyle(fontSize: 14.0 ,fontWeight: FontWeight.w600, color: kAccentDarkColor ),
+        display3: TextStyle(fontSize:14.0 , letterSpacing: 2.0, color:Colors.white),
+        display4: TextStyle(fontSize:18.0 , letterSpacing: 4.0, color:Colors.white , fontWeight: FontWeight.w700),
     title:
-        TextStyle(fontWeight: FontWeight.w500, fontSize: 30, letterSpacing: 5),
+        TextStyle(fontWeight: FontWeight.w500, fontSize: 25, letterSpacing: 5),
     subtitle: TextStyle(
       fontWeight: FontWeight.w400,
-      fontSize: 18,
+      fontSize: 14,
       letterSpacing: 5,
     ),
     overline: TextStyle(fontSize: 14, letterSpacing: 4.0, color: kAccentColor),
