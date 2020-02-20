@@ -6,7 +6,7 @@ final ThemeData kMainTheme = ThemeData.dark().copyWith(
   accentColor: kAccentColor,
   cardColor: kAccentColor,
   textTheme: TextTheme(
-    body1: TextStyle(fontFamily: 'Bebas Neue', fontSize: 22, letterSpacing: 2),
+    body1: TextStyle(fontFamily: 'Bebas Neue', fontSize: 22, letterSpacing: 4),
     body2: TextStyle(
       fontFamily: 'Bebas Neue',
       fontSize: 18,
@@ -32,7 +32,7 @@ final ThemeData kMainTheme = ThemeData.dark().copyWith(
       fontSize: 14,
       letterSpacing: 5,
     ),
-    overline: TextStyle(fontSize: 14, letterSpacing: 4.0, color: kAccentColor),
+    overline: TextStyle(fontSize: 12, letterSpacing: 2.0, color: kAccentColor),
   ),
 );
 
