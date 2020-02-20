@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
         child: Container(
           height: height,
           width: width,
-          padding: EdgeInsets.symmetric(horizontal:20.0 , vertical: 15.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
           decoration: BoxDecoration(gradient: kBackgroundGradient),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,7 +172,24 @@ class MyHomePage extends StatelessWidget {
               ),
               Row(
                 children: <Widget>[
-                  ItemVerticalCard(width: width, height: height, textTheme: textTheme),
+                  ItemVerticalCard(
+                    textTheme: textTheme,
+                    image: 'assets/images/watch03.png',
+                    brand: 'Fossil',
+                    name: 'GRANT WATCH ',
+                    color: kAccentColor,
+                    likeCallback: () {},
+                    productCallback: () {},
+                  ),
+                  ItemVerticalCard(
+                    textTheme: textTheme,
+                    image: 'assets/images/watch02.png',
+                    brand: 'TOMMY HILFIGER',
+                    name: 'DECKER WATCH',
+                    color: kAccentColor,
+                    likeCallback: () {},
+                    productCallback: () {},
+                  ),
                 ],
               )
             ],
@@ -184,72 +201,76 @@ class MyHomePage extends StatelessWidget {
 }
 
 class ItemVerticalCard extends StatelessWidget {
-  const ItemVerticalCard({
-    Key key,
-    @required this.width,
-    @required this.height,
-    @required this.textTheme,
-  }) : super(key: key);
+  const ItemVerticalCard(
+      {@required this.textTheme,
+      @required this.image,
+      @required this.brand,
+      @required this.name,
+      @required this.color,
+      @required this.productCallback,
+      @required this.likeCallback});
 
-  final double width;
-  final double height;
+  final String name;
+  final String brand;
+  final String image;
   final TextTheme textTheme;
-
+  final Color color;
+  final Function productCallback;
+  final Function likeCallback;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width / 2.2,
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          InkWell(
-            onTap: () {},
-            child: AnimatedContainer(
-              margin: EdgeInsets.symmetric(horizontal:10.0),
-              width: double.infinity,
-              duration: Duration(seconds: 1),
-              decoration: BoxDecoration(
-                color: kAccentColor,
-                borderRadius: BorderRadius.circular(15.0),
-                image: DecorationImage(
-                    image:
-                        AssetImage('assets/images/watch03.png'),
-                    fit: BoxFit.contain,
-                    alignment: Alignment.center),
-              ),
-              height: height / 4,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.all(10.0),
-                    padding: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                        color: kAccentDarkColor.withAlpha(90),
-                        borderRadius:
-                            BorderRadius.circular(12.0)),
-                    child: InkWell(
-                        onTap: () {},
-                        child: Icon(Ionicons.ios_heart,
-                            size: 18.0)),
-                  )
-                ],
-              ),
-            ),
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        AnimatedContainer(
+          margin: EdgeInsets.symmetric(horizontal: 7.0),
+          width: width / 2.5,
+          duration: Duration(seconds: 1),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(15.0),
+            image: DecorationImage(
+                image: AssetImage(image),
+                fit: BoxFit.fitHeight,
+                alignment: Alignment.center),
           ),
-          SizedBox(height:10.0),
-          Text(
-            'Fossil',
-            style: textTheme.display3,
+          height: height / 4,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                    color: kAccentDarkColor.withAlpha(90),
+                    borderRadius: BorderRadius.circular(12.0)),
+                child: InkWell(
+                    onTap: () {}, child: Icon(Ionicons.ios_heart, size: 18.0)),
+              )
+            ],
           ),
-          Text(
-            'GRANT WATCH ',
-            style: textTheme.display4,
-          )
-        ],
-      ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 10.0, left: 10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                brand,
+                style: textTheme.display3,
+              ),
+              Text(
+                name,
+                style: textTheme.display4,
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
