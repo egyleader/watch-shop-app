@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:watch_shop_app/const.dart';
+import 'components/featured_item_card.dart';
+import 'components/item_vertical_card.dart';
+import 'components/paginating_header.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,6 +38,7 @@ class MyHomePage extends StatelessWidget {
           decoration: BoxDecoration(gradient: kBackgroundGradient),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,113 +68,34 @@ class MyHomePage extends StatelessWidget {
               ),
               SizedBox(height: height / 25),
               // TODO: move this into it's own wigdet
-              Text(
-                'FEATURED',
-                style: textTheme.subtitle,
+              PaginatingHeader(
+                subtitle: 'FEATURED',
+                title: 'PRODUCTS',
+                nextCallback: () {},
+                previousCallback: () {},
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text('PRODUCTS', style: textTheme.title),
-                  Row(
-                    children: <Widget>[
-                      IconButton(
-                          icon: Icon(
-                            Ionicons.ios_arrow_back,
-                            size: 35.0,
-                            color: kAccentColor,
-                          ),
-                          onPressed: () {}),
-                      IconButton(
-                          icon: Icon(
-                            Ionicons.ios_arrow_forward,
-                            size: 35.0,
-                            color: kAccentColor,
-                          ),
-                          onPressed: () {}),
-                    ],
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.all(10.0),
-                padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 15.0),
-                height: 210.0,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/watch01.png'),
-                    fit: BoxFit.contain,
-                    alignment: Alignment.topRight,
-                  ),
-                  borderRadius: BorderRadius.circular(25.0),
-                  color: kAccentColor,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'WSD-006',
-                      style: textTheme.display2,
-                    ),
-                    Text(
-                      'WISHDOIT',
-                      style: textTheme.display1,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                      child: SizedBox(
-                        width: width / 2.8,
-                        child: Text(
-                          'Fashion Men Quartz Watch Luxury Leather Strap Waterproof',
-                          style: textTheme.caption,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-                      width: width / 4,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Text('Buy Now  ⟶',
-                          style: textTheme.caption.copyWith(
-                              textBaseline: TextBaseline.ideographic)),
-                    )
-                  ],
-                ),
+
+              FeaturedItemCard(
+                image: 'assets/images/watch01.png',
+                model: 'WSD-006',
+                color: kAccentColor,
+                ctaCallback: () {},
+                exrept:
+                    'Fashion Men Quartz Watch Luxury Leather Strap Waterproof',
+                name: 'WISHDOIT',
+                ctaText: 'Buy Now',
               ),
               SizedBox(height: 15.0),
-              Text(
-                'TRENDING',
-                style: textTheme.subtitle,
+
+              PaginatingHeader(
+                subtitle: 'POPULAR',
+                title: 'PRODUCTS',
+                nextCallback: () {},
+                previousCallback: () {},
               ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text('PRODUCTS', style: textTheme.title),
-                  Row(
-                    children: <Widget>[
-                      IconButton(
-                          icon: Icon(
-                            Ionicons.ios_arrow_back,
-                            size: 35.0,
-                            color: kAccentColor,
-                          ),
-                          onPressed: () {}),
-                      IconButton(
-                          icon: Icon(
-                            Ionicons.ios_arrow_forward,
-                            size: 35.0,
-                            color: kAccentColor,
-                          ),
-                          onPressed: () {}),
-                    ],
-                  ),
-                ],
-              ),
-              Row(
                 children: <Widget>[
                   ItemVerticalCard(
                     textTheme: textTheme,
@@ -196,81 +121,6 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class ItemVerticalCard extends StatelessWidget {
-  const ItemVerticalCard(
-      {@required this.textTheme,
-      @required this.image,
-      @required this.brand,
-      @required this.name,
-      @required this.color,
-      @required this.productCallback,
-      @required this.likeCallback});
-
-  final String name;
-  final String brand;
-  final String image;
-  final TextTheme textTheme;
-  final Color color;
-  final Function productCallback;
-  final Function likeCallback;
-  @override
-  Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        AnimatedContainer(
-          margin: EdgeInsets.symmetric(horizontal: 7.0),
-          width: width / 2.5,
-          duration: Duration(seconds: 1),
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(15.0),
-            image: DecorationImage(
-                image: AssetImage(image),
-                fit: BoxFit.fitHeight,
-                alignment: Alignment.center),
-          ),
-          height: height / 4,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.all(10.0),
-                padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    color: kAccentDarkColor.withAlpha(90),
-                    borderRadius: BorderRadius.circular(12.0)),
-                child: InkWell(
-                    onTap: () {}, child: Icon(Ionicons.ios_heart, size: 18.0)),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 10.0, left: 10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                brand,
-                style: textTheme.display3,
-              ),
-              Text(
-                name,
-                style: textTheme.display4,
-              )
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
