@@ -29,10 +29,11 @@ final ThemeData kMainTheme = ThemeData.dark().copyWith(
         TextStyle(fontWeight: FontWeight.w500, fontSize: 25, letterSpacing: 5),
     subtitle: TextStyle(
       fontWeight: FontWeight.w400,
-      fontSize: 14,
-      letterSpacing: 5,
+      fontSize: 12,
+      letterSpacing: 3,
     ),
     overline: TextStyle(fontSize: 12, letterSpacing: 2.0, color: kAccentColor),
+    subhead: TextStyle(fontSize:25.0 ,color:kAccentColor ,fontWeight:FontWeight.bold)
   ),
 );
 
