@@ -8,6 +8,7 @@ class RoundedIconButton extends StatelessWidget {
     this.padding = 10.0,
     this.borderRadius = 15.0,
     this.textStyle,
+    this.onpressed,
   });
 
   final Icon icon;
@@ -16,15 +17,20 @@ class RoundedIconButton extends StatelessWidget {
   final double padding;
   final double borderRadius;
   final TextStyle textStyle;
-
+  final Function onpressed;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: color, borderRadius: BorderRadius.circular(borderRadius)),
-      padding: EdgeInsets.all(margin),
-      margin: EdgeInsets.all(padding),
-      child: Center(child: icon),
+    return InkWell(
+
+      
+      onTap: onpressed != null ? onpressed : () {},
+      child: Container(
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(borderRadius)),
+        padding: EdgeInsets.all(margin),
+        margin: EdgeInsets.all(padding),
+        child: Center(child: icon),
+      ),
     );
   }
 }

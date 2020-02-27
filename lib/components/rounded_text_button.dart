@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class RoundedTextButton extends StatelessWidget {
@@ -9,6 +8,7 @@ class RoundedTextButton extends StatelessWidget {
     this.padding = 10.0,
     this.borderRadius = 15.0,
     this.textStyle,
+    this.onpressed ,
   });
 
   final String text;
@@ -17,20 +17,24 @@ class RoundedTextButton extends StatelessWidget {
   final double padding;
   final double borderRadius;
   final TextStyle textStyle;
+  final Function onpressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: color, borderRadius: BorderRadius.circular(borderRadius)),
-      padding: EdgeInsets.all(margin),
-      margin: EdgeInsets.all(padding),
-      child: Center(
-          child: Text(
-        text,
-        style:
-            textStyle != null ? textStyle : Theme.of(context).textTheme.body1,
-      )),
+    return InkWell(
+      onTap: onpressed != null ? onpressed : () { },
+      child: Container(
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(borderRadius)),
+        padding: EdgeInsets.all(margin),
+        margin: EdgeInsets.all(padding),
+        child: Center(
+            child: Text(
+          text,
+          style:
+              textStyle != null ? textStyle : Theme.of(context).textTheme.body1,
+        )),
+      ),
     );
   }
 }

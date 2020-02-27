@@ -1,10 +1,10 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:watch_shop_app/components/featured_item_card.dart';
 import 'package:watch_shop_app/components/item_vertical_card.dart';
 import 'package:watch_shop_app/components/paginating_header.dart';
+import 'package:watch_shop_app/screens/product_details_page.dart';
 
 import '../const.dart';
 
@@ -62,7 +62,6 @@ class MyHomePage extends StatelessWidget {
                 nextCallback: () {},
                 previousCallback: () {},
               ),
-
               FeaturedItemCard(
                 image: 'assets/images/watch01.png',
                 model: 'WSD-006',
@@ -74,14 +73,12 @@ class MyHomePage extends StatelessWidget {
                 ctaText: 'Buy Now',
               ),
               SizedBox(height: 15.0),
-
               PaginatingHeader(
                 subtitle: 'POPULAR',
                 title: 'PRODUCTS',
                 nextCallback: () {},
                 previousCallback: () {},
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -92,7 +89,9 @@ class MyHomePage extends StatelessWidget {
                     name: 'GRANT WATCH ',
                     color: kAccentColor,
                     likeCallback: () {},
-                    productCallback: () {},
+                    productCallback: () {
+                     
+                    },
                   ),
                   ItemVerticalCard(
                     textTheme: textTheme,
@@ -101,7 +100,12 @@ class MyHomePage extends StatelessWidget {
                     name: 'DECKER WATCH',
                     color: kAccentColor,
                     likeCallback: () {},
-                    productCallback: () {},
+                    productCallback: () {
+                       Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetailsPage()));
+                    },
                   ),
                 ],
               )
