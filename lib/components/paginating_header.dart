@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:watch_shop_app/const.dart';
 
 class PaginatingHeader extends StatelessWidget {
@@ -10,10 +10,10 @@ class PaginatingHeader extends StatelessWidget {
   final Function nextCallback;
 
   PaginatingHeader(
-      {@required this.title,
-      @required this.subtitle,
-      @required this.previousCallback,
-      @required this.nextCallback});
+      {required this.title,
+      required this.subtitle,
+      required this.previousCallback,
+      required this.nextCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -24,30 +24,30 @@ class PaginatingHeader extends StatelessWidget {
       children: <Widget>[
         Text(
           subtitle,
-          style: textTheme.subtitle,
+          style: textTheme.subtitle2,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(title, style: textTheme.title),
+            Text(title, style: textTheme.subtitle1),
             Row(
               children: <Widget>[
                 IconButton(
-                    padding: EdgeInsets.all(0.0),
-                    icon: Icon(
-                      Ionicons.ios_arrow_back,
+                    padding: const EdgeInsets.all(0.0),
+                    icon: const Icon(
+                      Ionicons.arrow_back,
                       size: 30.0,
                       color: kAccentColor,
                     ),
-                    onPressed: previousCallback),
+                    onPressed: previousCallback as void Function()?),
                 IconButton(
-                    padding: EdgeInsets.all(0.0),
-                    icon: Icon(
-                      Ionicons.ios_arrow_forward,
+                    padding: const EdgeInsets.all(0.0),
+                    icon: const Icon(
+                      Ionicons.arrow_forward,
                       size: 30.0,
                       color: kAccentColor,
                     ),
-                    onPressed: nextCallback),
+                    onPressed: nextCallback as void Function()?),
               ],
             ),
           ],

@@ -7,13 +7,13 @@ class FeaturedItemCard extends StatelessWidget {
 
 
   const FeaturedItemCard({
-    @required this.image,
-    @required this.model,
-    @required this.name ,
-    @required this.exrept,
-    @required this.color,
+    required this.image,
+    required this.model,
+    required this.name ,
+    required this.exrept,
+    required this.color,
               this.ctaText,
-    @required this.ctaCallback,
+    required this.ctaCallback,
   });
 
   final String   image;
@@ -21,7 +21,7 @@ class FeaturedItemCard extends StatelessWidget {
   final String   name;
   final String   exrept;
   final Color    color;
-  final String   ctaText;
+  final String?   ctaText;
   final Function ctaCallback;
 
   @override
@@ -48,11 +48,11 @@ class FeaturedItemCard extends StatelessWidget {
         children: <Widget>[
           Text(
             model,
-            style: textTheme.display2,
+            style: textTheme.headline2,
           ),
           Text(
             name,
-            style: textTheme.display1,
+            style: textTheme.headline1,
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -70,7 +70,7 @@ class FeaturedItemCard extends StatelessWidget {
                 color: Colors.white, borderRadius: BorderRadius.circular(10)),
             child: Text('Buy Now  ⟶',
                 style: textTheme.caption
-                    .copyWith(textBaseline: TextBaseline.ideographic)),
+  ?.copyWith(textBaseline: TextBaseline.ideographic)),
           )
         ],
       ),

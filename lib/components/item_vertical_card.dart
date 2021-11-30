@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../const.dart';
 
 class ItemVerticalCard extends StatelessWidget {
   const ItemVerticalCard(
-      {@required this.textTheme,
-      @required this.image,
-      @required this.brand,
-      @required this.name,
-      @required this.color,
-      @required this.productCallback,
-      @required this.likeCallback});
+      {required this.textTheme,
+      required this.image,
+      required this.brand,
+      required this.name,
+      required this.color,
+      required this.productCallback,
+      required this.likeCallback});
 
   final String name;
   final String brand;
@@ -29,10 +29,10 @@ class ItemVerticalCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         InkWell(
-          onTap: productCallback,
+          onTap: productCallback as void Function()?,
           child: AnimatedContainer(
             width: width / 2.5,
-            duration: Duration(seconds: 1),
+            duration: const Duration(seconds: 1),
             decoration: BoxDecoration(
               color: color,
               borderRadius: BorderRadius.circular(15.0),
@@ -47,14 +47,14 @@ class ItemVerticalCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(10.0),
-                  padding: EdgeInsets.all(10.0),
+                  margin: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                       color: kAccentDarkColor.withAlpha(90),
                       borderRadius: BorderRadius.circular(12.0)),
                   child: InkWell(
-                      onTap: likeCallback,
-                      child: Icon(Ionicons.ios_heart, size: 18.0)),
+                      onTap: likeCallback as void Function()?,
+                      child: const Icon(Ionicons.heart, size: 18.0)),
                 )
               ],
             ),
@@ -67,11 +67,11 @@ class ItemVerticalCard extends StatelessWidget {
             children: <Widget>[
               Text(
                 brand,
-                style: textTheme.display3,
+                style: textTheme.headline3,
               ),
               Text(
                 name,
-                style: textTheme.display4,
+                style: textTheme.headline4,
               )
             ],
           ),

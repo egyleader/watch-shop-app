@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class RoundedTextButton extends StatelessWidget {
   RoundedTextButton({
-    @required this.text,
+    required this.text,
     this.color,
     this.margin = 10.0,
     this.padding = 10.0,
@@ -12,17 +12,17 @@ class RoundedTextButton extends StatelessWidget {
   });
 
   final String text;
-  final Color color;
+  final Color? color;
   final double margin;
   final double padding;
   final double borderRadius;
-  final TextStyle textStyle;
-  final Function onpressed;
+  final TextStyle? textStyle;
+  final Function? onpressed;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onpressed != null ? onpressed : () { },
+      onTap: onpressed != null ? onpressed as void Function()? : () { },
       child: Container(
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(borderRadius)),
@@ -32,7 +32,7 @@ class RoundedTextButton extends StatelessWidget {
             child: Text(
           text,
           style:
-              textStyle != null ? textStyle : Theme.of(context).textTheme.body1,
+              textStyle != null ? textStyle : Theme.of(context).textTheme.bodyText1,
         )),
       ),
     );
