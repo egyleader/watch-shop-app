@@ -25,7 +25,7 @@ class ProductDetailsPage extends StatelessWidget {
               children: <Widget>[
                 Container(
                     width: width / 2,
-                    height: height / 1.7,
+                    height: height / 2,
                     decoration: const BoxDecoration(
                         color: kAccentColor, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100))),
                     child: Row(
@@ -51,6 +51,7 @@ class ProductDetailsPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     // Begin menu
                     Row(
@@ -65,7 +66,7 @@ class ProductDetailsPage extends StatelessWidget {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => MyHomePage()),
+                                MaterialPageRoute(builder: (context) => const MyHomePage()),
                               );
                             }),
                         Row(
@@ -166,11 +167,11 @@ class ProductDetailsPage extends StatelessWidget {
                             children: <Widget>[
                               Text(
                                 'TRENDING PRODUCTS',
-                                style: textTheme.subtitle1,
+                                style: textTheme.subtitle2,
                               ),
                               Text(
                                 'DECKER WATCH',
-                                style: textTheme.subtitle1,
+                                style: textTheme.headline5,
                               ),
                             ],
                           ),
